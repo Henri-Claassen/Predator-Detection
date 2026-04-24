@@ -16,7 +16,7 @@ MODEL_NAME = "yolov8s-oiv7.pt"
 CONFIDENCE_THRESHOLD = 0.50
 
 PROCESS_EVERY_N_FRAMES = 3
-
+    
 DETECTION_COOLDOWN_SECONDS = 15
 
 PREDATOR_CLASSES = [
@@ -152,6 +152,7 @@ def main():
     print("  Connecting to stream...")
 
     cap = cv2.VideoCapture(VIDEO_SOURCE)
+    cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
 
     if not cap.isOpened():
         print("\nERROR: Could not connect to video source!")
@@ -170,11 +171,20 @@ def main():
             ret, frame = cap.read()
 
             if not ret or frame is None:
-                print("Stream connection lost. Reconnecting in 3 seconds...")
+                print("Stream lost. Waiting for stream to come back...")
                 cap.release()
-                time.sleep(3)
-                cap = cv2.VideoCapture(VIDEO_SOURCE)
-                cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
+                while True:
+                    time.sleep(5)
+                    cap = cv2.VideoCapture(VIDEO_SOURCE)
+                    cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
+                    if cap.isOpened():
+                        ret_test, _ = cap.read()
+                        if ret_test:
+                            print("Stream reconnected! Resuming detection...\n")
+                            break
+                    cap.release()
+                    print("Stream still offline, retrying in 5 seconds...")
+                frame_count = 0
                 continue
 
             frame_count += 1
