@@ -1,6 +1,6 @@
 # Predator Detection System
 
-An automated wildlife predator detection system using a Raspberry Pi, a USB webcam, and YOLOv8 object detection. Detections are logged to a MySQL database.
+An automated wildlife predator detection system using a Raspberry Pi, a USB webcam, and YOLOv8 object detection. Detections are logged to a MySQL database. This was used for the predator detection in the Pennsylvania State Combined with Belgium Campus project.
 
 ## How It Works
 
