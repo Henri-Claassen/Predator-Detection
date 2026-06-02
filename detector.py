@@ -9,7 +9,7 @@ from database_connect import insert_predator
 # SECTION 1 — Setting up the model
 # ===========================================================
 
-VIDEO_SOURCE = "http://192.168.0.129:5000/stream"   # <-- CHANGE THIS To Stream URL
+VIDEO_SOURCE = "http://INSERT_IP_HERE:5000/stream"   # <-- CHANGE THIS To Stream URL
 
 MODEL_NAME = "yolov8s-oiv7.pt"
 

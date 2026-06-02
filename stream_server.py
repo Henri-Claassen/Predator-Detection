@@ -1,27 +1,21 @@
 """
 =============================================================
-  stream_server.py  —  Run this on your Raspberry Pi
+  stream_server.py  —  Run this on a Raspberry Pi
 =============================================================
 
-PURPOSE:
-  This file turns your Raspberry Pi + webcam into a video stream
-  server that works EXACTLY the same way the ESP32-CAM will later.
-  When you get the ESP32-CAM, you just stop running this file and
-  update the VIDEO_SOURCE URL in detector.py. Nothing else changes.
-
-HOW TO RUN ON YOUR RASPBERRY PI:
+HOW TO RUN ON A RASPBERRY PI:
   1. Copy this file to your Pi (USB, SSH, or git clone)
   2. Install dependencies:
         pip install flask opencv-python
   3. Run it:
         python stream_server.py
   4. It will print your stream URL, e.g.:
-        Stream running at: http://192.168.1.105:5000/stream
+        Stream running at: http://INSERT_IP_HERE:5000/stream
   5. Copy that URL into detector.py on your laptop
 
 HOW TO FIND YOUR PI'S IP ADDRESS:
   On the Pi, run:  hostname -I
-  It will show something like: 192.168.1.105
+  It will show something like: INSERT_IP_HERE
 
 FOR CROSS-NETWORK STREAMING (your friend's house → your house):
   1. Install ngrok on the Pi:   https://ngrok.com/download
@@ -123,8 +117,8 @@ def generate_frames():
 def video_feed():
     """
     This is the URL your laptop will connect to.
-    e.g. http://192.168.1.105:5000/stream
-    
+    e.g. http://INSERT_IP_HERE:5000/stream
+
     It returns a continuous MJPEG video stream.
     The ESP32-CAM also serves its stream at /stream by default.
     """
@@ -138,7 +132,7 @@ def video_feed():
 def index():
     """
     Visit this in a browser to test the stream visually.
-    e.g. http://192.168.1.105:5000/
+    e.g. http://INSERT_IP_HERE:5000/
     """
     return """
     <html>
