@@ -1,6 +1,7 @@
 # Predator Detection System
 
 An automated wildlife predator detection system using a Raspberry Pi, a USB webcam, and YOLOv8 object detection. Detections are logged to a MySQL database. This was used for the predator detection in the Pennsylvania State Combined with Belgium Campus project.
+The database creation file is in this project it needs to be run in MySQL, it has seed data populated, the username is Admin and password is Admin123
 
 ## How It Works
 
